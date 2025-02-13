@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Retail Shop Management System - SRS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19975a87-7a50-80d4-8543-cf2c41ef2a58" class="page sans"><header><h1 class="page-title">Retail Shop Management System - SRS</h1><p class="page-description"></p></header><div class="page-body"><nav id="19975a87-7a50-8075-a3f9-f614582818de" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19975a87-7a50-803f-bfe0-d24854ed6542">Revision History</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19975a87-7a50-8060-8d2c-f59ac9c75f2e">1. Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80d3-9402-cb0070cf4b07">1.1 Purpose</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80a2-a395-c10658e37072">1.2 Document Conventions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-801b-9f44-d841a8c1991e"><strong>1.3 Intended Audience and Reading Suggestions</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8097-a7d5-e0892cf6a347"><strong>1.4 Project Scope</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80ec-b33a-ceb6a034c282"><strong>1.5 References</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19975a87-7a50-8062-9102-e0a0662e2406">2. Overall Description</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8067-9de8-f2fc09a65932"><strong>2.1 Product Perspective</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80c1-8787-c172327c0fc7"><strong>2.2 Product Features</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-803f-9856-ca252162d66e"><strong>2.3 User Classes and Characteristics</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8014-8c65-ca9d3173fa57"><strong>2.4 Operating Environment</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80f9-8a8e-d07036ad24dd"><strong>2.5 Design and Implementation Constraints</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8036-9c2f-fd168f649c95"><strong>2.6 User Documentation</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8077-8c63-d75871d6d486"><strong>2.7 Assumptions and Dependencies</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19975a87-7a50-80bf-bf43-d002cb15f3c2"><strong>3. System Features</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8032-90d9-d741ff4f4487"><strong>3.1 User Authentication and Access Control</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-807f-869a-c698e0b4b36d"><strong>3.2 Inventory Management</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80aa-b319-e02e1f997b63"><strong>3.3 Sales and Billing</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8022-bea7-c6c1b122e3c6"><strong>3.4 Customer and Supplier Management</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80e3-b0f4-f74ff4f20120"><strong>3.5 Reports and Analytics</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19975a87-7a50-8016-8625-f2f7249f662e"><strong>4. External Interface Requirements</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8068-9361-d688fb4fddb6"><strong>4.1 User Interfaces</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8099-a491-e2eea887ba98"><strong>4.2 Hardware Interfaces</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8044-9e80-c70b9614ff38"><strong>4.3 Software Interfaces</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80a9-87ec-f6c127023722"><strong>4.4 Communications Interfaces</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19975a87-7a50-80ce-9b19-ddbe7864fc93"><strong>5. Other Nonfunctional Requirements</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8057-b2dc-f9d4827cc2d8"><strong>5.1 Performance Requirements</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80c3-b1f8-f6a414263a38"><strong>5.2 Safety Requirements</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-8051-8adf-c6465d31150e"><strong>5.3 Security Requirements</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19975a87-7a50-80f5-84ea-d3e729f3676e"><strong>5.4 Software Quality Attributes</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19975a87-7a50-805d-93f9-f43de1f3e97d"><strong>6. Other Requirements</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19975a87-7a50-8075-a362-e0291fb90990"><strong>7. Project Management</strong></a></div></nav><p id="19975a87-7a50-803d-8ad0-dbad0e310489" class="">
+</p><h1 id="19975a87-7a50-803f-bfe0-d24854ed6542" class="">Revision History</h1><table id="19975a87-7a50-80ef-9b38-c3d2e188d167" class="simple-table"><thead class="simple-table-header"><tr id="19975a87-7a50-802b-acb9-c097ea6adb07"><th id="MeNt" class="simple-table-header-color simple-table-header" style="width:172.5px">Name</th><th id="{{ts" class="simple-table-header-color simple-table-header" style="width:172.5px">Date</th><th id="t:YG" class="simple-table-header-color simple-table-header" style="width:172.5px">Reason For Changes</th><th id="dJxq" class="simple-table-header-color simple-table-header" style="width:172.5px">Version</th></tr></thead><tbody><tr id="19975a87-7a50-8044-9a71-c7f40d3edbe8"><td id="MeNt" class="" style="width:172.5px">Muhammad Arham</td><td id="{{ts" class="" style="width:172.5px">13/02/2025</td><td id="t:YG" class="" style="width:172.5px">Initial Draft</td><td id="dJxq" class="" style="width:172.5px">1.0</td></tr><tr id="19975a87-7a50-80d2-b137-cf103e4da32f"><td id="MeNt" class="" style="width:172.5px"></td><td id="{{ts" class="" style="width:172.5px"></td><td id="t:YG" class="" style="width:172.5px"></td><td id="dJxq" class="" style="width:172.5px"></td></tr></tbody></table><h1 id="19975a87-7a50-8060-8d2c-f59ac9c75f2e" class="">1. Introduction</h1><h2 id="19975a87-7a50-80d3-9402-cb0070cf4b07" class="">1.1 Purpose</h2><p id="19975a87-7a50-80d2-93da-fe32a2b046fd" class="">The purpose of this document is to define the functional and non-functional requirements for the <strong>Retail Shop Management System (RSMS)</strong>. This system aims to streamline the operations of a retail shop, including inventory management, sales tracking, customer management, and reporting.</p><h2 id="19975a87-7a50-80a2-a395-c10658e37072" class="">1.2 Document Conventions</h2><p id="19975a87-7a50-8043-89ec-efc2d00e5d6f" class="">This document follows standard formatting with:</p><ul id="19975a87-7a50-80f2-9653-ce7a544d0488" class="bulleted-list"><li style="list-style-type:disc">Bold for key terms.</li></ul><ul id="19975a87-7a50-8042-af64-ff0dfbb8134c" class="bulleted-list"><li style="list-style-type:disc">Bullet points for list.</li></ul><ul id="19975a87-7a50-806e-b540-f03c3eea05f7" class="bulleted-list"><li style="list-style-type:disc">Tables where applicable.</li></ul><h2 id="19975a87-7a50-801b-9f44-d841a8c1991e" class=""><strong>1.3 Intended Audience and Reading Suggestions</strong></h2><p id="19975a87-7a50-8086-909e-e2d8b1f4b4d3" class="">This document is intended for:</p><ul id="19975a87-7a50-8094-afaf-cc1498928ace" class="bulleted-list"><li style="list-style-type:disc"><strong>Developers</strong>: To understand system architecture and requirements.</li></ul><ul id="19975a87-7a50-8006-8966-ce947b581c05" class="bulleted-list"><li style="list-style-type:disc"><strong>Project Managers</strong>: To track deliverables and system functionality.</li></ul><ul id="19975a87-7a50-80ab-9166-c32f7373089c" class="bulleted-list"><li style="list-style-type:disc"><strong>End Users</strong>: To comprehend system capabilities.</li></ul><ul id="19975a87-7a50-80ba-96a1-e6225dd36721" class="bulleted-list"><li style="list-style-type:disc"><strong>QA Testers</strong>: To validate functionality against requirements.</li></ul><h2 id="19975a87-7a50-8097-a7d5-e0892cf6a347" class=""><strong>1.4 Project Scope</strong></h2><p id="19975a87-7a50-8088-94af-d4442441da53" class="">The Retail Shop Management System is designed to assist shop owners in managing inventory, processing sales, generating invoices, and maintaining customer and supplier details. The system will enhance efficiency and reduce manual work by automating core business operations.</p><h2 id="19975a87-7a50-80ec-b33a-ceb6a034c282" class=""><strong>1.5 References</strong></h2><ul id="19975a87-7a50-8080-b5c5-d1a806554016" class="bulleted-list"><li style="list-style-type:disc">IEEE 830-1998 Software Requirements Specification Standard.</li></ul><ul id="19975a87-7a50-809d-89fc-cd36b5b0a6cc" class="bulleted-list"><li style="list-style-type:disc">Relevant APIs and system documentation.</li></ul><h1 id="19975a87-7a50-8062-9102-e0a0662e2406" class="">2. Overall Description</h1><h2 id="19975a87-7a50-8067-9de8-f2fc09a65932" class=""><strong>2.1 Product Perspective</strong></h2><p id="19975a87-7a50-80d9-b84b-cd83c383b61b" class="">The system will be a <strong>web-based application</strong> that can be accessed through any modern browser. It will integrate with barcode scanners and printers for efficient sales processing.</p><h2 id="19975a87-7a50-80c1-8787-c172327c0fc7" class=""><strong>2.2 Product Features</strong></h2><ul id="19975a87-7a50-8098-92bf-f7840fb62c96" class="bulleted-list"><li style="list-style-type:disc">Inventory management.</li></ul><ul id="19975a87-7a50-807a-8bd1-e4dc59c3effd" class="bulleted-list"><li style="list-style-type:disc">Sales and billing.</li></ul><ul id="19975a87-7a50-80dc-a08e-ea12cddc62e7" class="bulleted-list"><li style="list-style-type:disc">Customer and supplier management.</li></ul><ul id="19975a87-7a50-80be-8c41-f420defbb4a6" class="bulleted-list"><li style="list-style-type:disc">Role-based access control.</li></ul><ul id="19975a87-7a50-80a5-9ee8-c7aaa3dc44f1" class="bulleted-list"><li style="list-style-type:disc">Reports and analytics.</li></ul><h2 id="19975a87-7a50-803f-9856-ca252162d66e" class=""><strong>2.3 User Classes and Characteristics</strong></h2><ul id="19975a87-7a50-801e-8e40-d1dc985a88ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Shop Owner/Admin</strong>: Full access to the system, including product management and financial reports.</li></ul><ul id="19975a87-7a50-80e9-b7be-c6d18f058f31" class="bulleted-list"><li style="list-style-type:disc"><strong>Cashiers</strong>: Limited access for processing sales and managing customers.</li></ul><ul id="19975a87-7a50-806f-8a57-d2d9d289eb9e" class="bulleted-list"><li style="list-style-type:disc"><strong>Customers</strong>: Can view available products and view product prices.</li></ul><h2 id="19975a87-7a50-8014-8c65-ca9d3173fa57" class=""><strong>2.4 Operating Environment</strong></h2><ul id="19975a87-7a50-80ac-94ee-edb0d9043475" class="bulleted-list"><li style="list-style-type:disc">Web-based (accessible on Windows, macOS, Linux)</li></ul><ul id="19975a87-7a50-8031-ad8c-c1de3507f235" class="bulleted-list"><li style="list-style-type:disc">Database: PostgreSQL</li></ul><ul id="19975a87-7a50-8012-ad66-c32ef75c2cfc" class="bulleted-list"><li style="list-style-type:disc">Backend: Node.js</li></ul><ul id="19975a87-7a50-80fc-ba5f-d33b07b649d5" class="bulleted-list"><li style="list-style-type:disc">Frontend: React</li></ul><h2 id="19975a87-7a50-80f9-8a8e-d07036ad24dd" class=""><strong>2.5 Design and Implementation Constraints</strong></h2><ul id="19975a87-7a50-8053-976d-c497ceb57d35" class="bulleted-list"><li style="list-style-type:disc">Must use an SQL-based relational database.</li></ul><ul id="19975a87-7a50-8096-8441-f1ec3a36f805" class="bulleted-list"><li style="list-style-type:disc">System must support real-time inventory updates.</li></ul><ul id="19975a87-7a50-8071-ae8f-df73ead67092" class="bulleted-list"><li style="list-style-type:disc">Data encryption required for user authentication.</li></ul><h2 id="19975a87-7a50-8036-9c2f-fd168f649c95" class=""><strong>2.6 User Documentation</strong></h2><ul id="19975a87-7a50-807a-ae7c-e2112af8d930" class="bulleted-list"><li style="list-style-type:disc">A <strong>detailed user manual</strong> will be provided.</li></ul><ul id="19975a87-7a50-8075-ac61-fadd74f0747c" class="bulleted-list"><li style="list-style-type:disc">System documentation will be maintained on <strong>Notion</strong> and uploaded to <strong>GitHub</strong>.</li></ul><h2 id="19975a87-7a50-8077-8c63-d75871d6d486" class=""><strong>2.7 Assumptions and Dependencies</strong></h2><ul id="19975a87-7a50-80cd-bea6-f707ca6f998a" class="bulleted-list"><li style="list-style-type:disc">Assumes stable internet connection for cloud-based features.</li></ul><ul id="19975a87-7a50-806b-a760-f7257bd974de" class="bulleted-list"><li style="list-style-type:disc">Requires integration with third-party payment gateways.</li></ul><h1 id="19975a87-7a50-80bf-bf43-d002cb15f3c2" class=""><strong>3. System Features</strong></h1><h2 id="19975a87-7a50-8032-90d9-d741ff4f4487" class=""><strong>3.1 User Authentication and Access Control</strong></h2><ul id="19975a87-7a50-800e-a669-e15dd0636dc7" class="bulleted-list"><li style="list-style-type:disc">Users must log in with a username and password.</li></ul><ul id="19975a87-7a50-8012-bf1a-ecc3eb186c80" class="bulleted-list"><li style="list-style-type:disc">Role-based access control (Admin, Cashier, Customer).</li></ul><h2 id="19975a87-7a50-807f-869a-c698e0b4b36d" class=""><strong>3.2 Inventory Management</strong></h2><ul id="19975a87-7a50-80f9-8234-de6fd4909d5d" class="bulleted-list"><li style="list-style-type:disc">Add, update, and delete products.</li></ul><ul id="19975a87-7a50-80db-9b06-c21592c6a0ff" class="bulleted-list"><li style="list-style-type:disc">Track stock levels and generate low-stock alerts.</li></ul><ul id="19975a87-7a50-80e5-85cb-c23c0235a6b2" class="bulleted-list"><li style="list-style-type:disc">Categorization of products with SKU and barcode support.</li></ul><h2 id="19975a87-7a50-80aa-b319-e02e1f997b63" class=""><strong>3.3 Sales and Billing</strong></h2><ul id="19975a87-7a50-80a7-bb15-cd68f5b1ee31" class="bulleted-list"><li style="list-style-type:disc">Process sales through a Point of Sale (POS) system.</li></ul><ul id="19975a87-7a50-80e5-a61a-fce352ba0fac" class="bulleted-list"><li style="list-style-type:disc">Generate invoices for customers.</li></ul><ul id="19975a87-7a50-8075-bf62-cf3242d82abe" class="bulleted-list"><li style="list-style-type:disc">Apply discounts and manage promotions.</li></ul><h2 id="19975a87-7a50-8022-bea7-c6c1b122e3c6" class=""><strong>3.4 Customer and Supplier Management</strong></h2><ul id="19975a87-7a50-80f0-89cf-f526a54547e9" class="bulleted-list"><li style="list-style-type:disc">Store customer details (name, contact, purchase history).</li></ul><ul id="19975a87-7a50-80a6-9e4a-d9204e13f1b8" class="bulleted-list"><li style="list-style-type:disc">Manage supplier information and product sourcing.</li></ul><h2 id="19975a87-7a50-80e3-b0f4-f74ff4f20120" class=""><strong>3.5 Reports and Analytics</strong></h2><ul id="19975a87-7a50-8069-ada0-d5daa8d65cbd" class="bulleted-list"><li style="list-style-type:disc">Generate daily, weekly, and monthly sales reports.</li></ul><ul id="19975a87-7a50-8097-8bde-cdc36bae7703" class="bulleted-list"><li style="list-style-type:disc">Analyze customer buying patterns and inventory trends.</li></ul><h1 id="19975a87-7a50-8016-8625-f2f7249f662e" class=""><strong>4. External Interface Requirements</strong></h1><h2 id="19975a87-7a50-8068-9361-d688fb4fddb6" class=""><strong>4.1 User Interfaces</strong></h2><ul id="19975a87-7a50-804f-a21f-f9afb86f6133" class="bulleted-list"><li style="list-style-type:disc">Web-based dashboard for shop owners.</li></ul><ul id="19975a87-7a50-807d-8958-cdf40e633df5" class="bulleted-list"><li style="list-style-type:disc">Point of Sale (POS) system for cashiers.</li></ul><ul id="19975a87-7a50-8072-ad08-edd2c7ee2fff" class="bulleted-list"><li style="list-style-type:disc">Wall mounted interface for customer interactions.</li></ul><h2 id="19975a87-7a50-8099-a491-e2eea887ba98" class=""><strong>4.2 Hardware Interfaces</strong></h2><ul id="19975a87-7a50-80b7-ac2e-d4cd51b6755a" class="bulleted-list"><li style="list-style-type:disc">Compatible with barcode scanners and receipt printers.</li></ul><ul id="19975a87-7a50-8082-9355-c88901045599" class="bulleted-list"><li style="list-style-type:disc">Works with standard POS hardware.</li></ul><h2 id="19975a87-7a50-8044-9e80-c70b9614ff38" class=""><strong>4.3 Software Interfaces</strong></h2><ul id="19975a87-7a50-80ed-9ad2-c6b9e4c08d9b" class="bulleted-list"><li style="list-style-type:disc">Integration with external payment gateways.</li></ul><ul id="19975a87-7a50-808a-bf5b-ce726db6da11" class="bulleted-list"><li style="list-style-type:disc">API-based communication with inventory suppliers.</li></ul><h2 id="19975a87-7a50-80a9-87ec-f6c127023722" class=""><strong>4.4 Communications Interfaces</strong></h2><ul id="19975a87-7a50-8033-8471-d5e3ef67da90" class="bulleted-list"><li style="list-style-type:disc">Secure HTTPS-based communication.</li></ul><ul id="19975a87-7a50-8027-a1e6-e595fc608ae3" class="bulleted-list"><li style="list-style-type:disc">Email/SMS notifications for order updates.</li></ul><h1 id="19975a87-7a50-80ce-9b19-ddbe7864fc93" class=""><strong>5. Other Nonfunctional Requirements</strong></h1><h2 id="19975a87-7a50-8057-b2dc-f9d4827cc2d8" class=""><strong>5.1 Performance Requirements</strong></h2><ul id="19975a87-7a50-8023-a617-e32e42d461f1" class="bulleted-list"><li style="list-style-type:disc">System should support <strong>100+ transactions per second</strong>.</li></ul><ul id="19975a87-7a50-8005-8bc9-eb633c99c61c" class="bulleted-list"><li style="list-style-type:disc">Inventory updates should reflect within <strong>2 seconds</strong>.</li></ul><h2 id="19975a87-7a50-80c3-b1f8-f6a414263a38" class=""><strong>5.2 Safety Requirements</strong></h2><ul id="19975a87-7a50-80d8-955a-f98070e46373" class="bulleted-list"><li style="list-style-type:disc">Data backups performed daily.</li></ul><ul id="19975a87-7a50-80f4-8b33-eee682ab0156" class="bulleted-list"><li style="list-style-type:disc">Error logging and alerts for failures.</li></ul><h2 id="19975a87-7a50-8051-8adf-c6465d31150e" class=""><strong>5.3 Security Requirements</strong></h2><ul id="19975a87-7a50-805f-8b28-f2ff263c8341" class="bulleted-list"><li style="list-style-type:disc"><strong>User authentication with encryption</strong></li></ul><ul id="19975a87-7a50-8010-bc08-f5a90c910cda" class="bulleted-list"><li style="list-style-type:disc"><strong>Role-based access control</strong> to prevent unauthorized access</li></ul><ul id="19975a87-7a50-8054-8f6b-d14139d601f1" class="bulleted-list"><li style="list-style-type:disc"><strong>Data encryption</strong> for sensitive information like customer details and transactions</li></ul><h2 id="19975a87-7a50-80f5-84ea-d3e729f3676e" class=""><strong>5.4 Software Quality Attributes</strong></h2><ul id="19975a87-7a50-8063-b552-e6ff4e1c1628" class="bulleted-list"><li style="list-style-type:disc"><strong>Reusability</strong>: Built using an object-oriented programming paradigm.</li></ul><ul id="19975a87-7a50-80cc-9ea0-d56ff6d4ade1" class="bulleted-list"><li style="list-style-type:disc"><strong>Maintainability</strong>: Well-documented codebase with a simple admin panel.</li></ul><ul id="19975a87-7a50-8007-beda-f36451252248" class="bulleted-list"><li style="list-style-type:disc"><strong>Reliability</strong>: Ensures <strong>99.9% uptime</strong> with automatic backups.</li></ul><ul id="19975a87-7a50-809f-8b82-fcd41ba1af09" class="bulleted-list"><li style="list-style-type:disc"><strong>Scalability</strong>: Supports multiple locations and high transaction volumes.</li></ul><h1 id="19975a87-7a50-805d-93f9-f43de1f3e97d" class=""><strong>6. Other Requirements</strong></h1><ul id="19975a87-7a50-80fe-9812-c6c6f4cc01b1" class="bulleted-list"><li style="list-style-type:disc">Compliance with relevant retail regulations.</li></ul><ul id="19975a87-7a50-80ea-9658-c72ec9e98aa4" class="bulleted-list"><li style="list-style-type:disc">Localization support for multiple languages.</li></ul><h1 id="19975a87-7a50-8075-a362-e0291fb90990" class=""><strong>7. Project Management</strong></h1><ul id="19975a87-7a50-80fb-93ca-f2522bf434e1" class="bulleted-list"><li style="list-style-type:disc"><strong>Jira</strong> will be used for task tracking.</li></ul><ul id="19975a87-7a50-80a4-8c6e-c18f582b3594" class="bulleted-list"><li style="list-style-type:disc">Development updates and version control will be maintained in <strong>GitHub</strong>.</li></ul><p id="19975a87-7a50-80b7-81d5-fdf40c2645f6" class="">
+</p><p id="19975a87-7a50-808c-a83e-e84d63107193" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
